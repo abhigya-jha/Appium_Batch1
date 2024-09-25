@@ -31,13 +31,17 @@ public class AppiumGestures2 {
 
 		URL url = new URL("http://127.0.0.1:4723/");
 		driver = new AndroidDriver(url, cap);
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
 		// Thread.sleep(Duration.ofSeconds(3));
 		// click on Views
 		driver.findElement(AppiumBy.accessibilityId("Views")).click();
-		driver.findElement(AppiumBy.accessibilityId("Gallery")).click();
-		driver.findElement(AppiumBy.accessibilityId("1. Photos")).click();
-		swipe();
+		driver.findElement(AppiumBy.accessibilityId("Date Widgets")).click();
+		driver.findElement(AppiumBy.accessibilityId("1. Dialog")).click();
+		driver.findElement(AppiumBy.accessibilityId("change the date")).click();
+		driver.findElement(AppiumBy.id("android:id/date_picker_header_year")).click();
+		scrollToElement(By.xpath("//android.widget.TextView[@resource-id=\"android:id/text1\" and @text=\"1988\"]"));
+		driver.findElement(By.xpath("//android.widget.TextView[@resource-id=\"android:id/text1\" and @text=\"1988\"]")).click();
+		//swipe();
 		//String command=scrollToSpecificElement("Spinner");
 		//driver.findElement(AppiumBy.androidUIAutomator(command)).click();
 		//By el = AppiumBy.accessibilityId("Picker");
@@ -92,8 +96,8 @@ public class AppiumGestures2 {
 
 	public static void Scroll() {
 
-		boolean canScrollMore = (Boolean) driver.executeScript("mobile: scrollGesture", ImmutableMap.of("left", 100,
-				"top", 100, "width", 600, "height", 600, "direction", "down", "percent", 1.0));
+		boolean canScrollMore = (Boolean) driver.executeScript("mobile: scrollGesture", ImmutableMap.of("left", 550,
+				"top", 1050, "width", 600, "height", 600, "direction", "up", "percent", 1.0));
 
 	}
 
